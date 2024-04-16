@@ -1,0 +1,22 @@
+li:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+#login:hover {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+#header {
+    display: flex; 
+    background-color: aqua;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#main{
+    font-family: monospace;
+}

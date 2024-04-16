@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/static/htmx.js"></script>
+  <title>Playground</title>
+  <link rel="stylesheet" href="styles/main.css">
+  
+</head>
+
+<body id="main">
+  <header id="header">
+    <h2 style="flex:1">boomer.homes</h2>
+    <h2 hx-get="/login" hx-target="#content" id="login" hx-push-url="true" >Login</h2>
+  </header>
+  <hr>
+  <div id="content">
+    <h3> --- Few Game List Here --- </h3>
+    <div id="game_list">
+      <ul hx-push-url="true">
+        <li hx-get="/uno" hx-target="#content" >Uno</li>
+        <li hx-get="/poker" hx-target="#content">Poker</li>
+      </ul>
+    </div>
+  </div>
+ 
+</body>
+<script>
+  window.addEventListener('htmx:afterOnLoad', function(event) {
+    if (window.location.pathname === '/login') {
+      document.title = 'Login';
+    } else if (window.location.pathname === '/uno') {
+      document.title = 'Uno';
+    } else if (window.location.pathname === '/poker') {
+      document.title = 'Poker';
+    } else {
+      document.title = 'Playground';
+    }
+  });
+</script>
+
+</html>

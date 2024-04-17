@@ -12,11 +12,27 @@ li:hover {
 
 #header {
     display: flex; 
-    background-color: aqua;
+    background-color: rgba(0, 225, 255, 0.119);
     padding-left: 10px;
     padding-right: 10px;
 }
 
 #main{
     font-family: monospace;
+}
+
+#server{
+    display: flex;
+}
+
+#cserver{
+    flex: 1;
+}
+
+#cserver_details{
+    display: flex;
+    align-items: center;
+}
+#cserver_details > * {
+    margin-right: 10px; /* Adjust as needed */
 }

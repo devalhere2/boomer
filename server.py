@@ -43,3 +43,15 @@ async def read_root(request: Request):
         return RedirectResponse(url='/',status_code=status.HTTP_302_FOUND)
 
     return FileResponse('pages/poker.html')
+
+@app.post('/server_form')
+async def read_root(request: Request):
+    form_data = await request.form()
+    data_dict = dict(form_data)
+    print(data_dict)
+    
+@app.post('/server_form')
+async def read_root(request: Request):
+    form_data = await request.form()
+    data_dict = dict(form_data)
+    print(data_dict)

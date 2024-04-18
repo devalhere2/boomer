@@ -12,8 +12,9 @@
 
 <body id="main">
   <header id="header">
-    <h2 style="flex:1">boomer.homes</h2>
-    <h2 hx-get="/login" hx-target="#content" id="login" hx-push-url="true">Login</h2>
+    <h2 hx-push-url="true" style="flex:1; cursor: pointer" hx-get="/" hx-target="#main" >boomer.homes</h2>
+    <input type="text" name="username" placeholder="Enter Username" id="username">
+    <!-- <h2 hx-get="/login" hx-target="#content" class="links" hx-push-url="true">Login</h2> -->
   </header>
   <hr>
   <div id="server">
@@ -21,9 +22,10 @@
       <div id="cserver_name">Create Server</div>
       <div id="cserver_details">
         <input class="cserver_form" name="create_server_name" placeholder="Enter Server Name ">
-        <select name="dropdown" class="cserver_form">
+        <select name="game" class="cserver_form">
           <option value="" disabled selected>Select game</option>
           <option value="uno">Uno</option>
+          <option value="unonm">Uno Nomercy</option>
           <option value="poker">Poker</option>
         </select>
         <input type="checkbox" name="voicechat" class="cserver_form" >
@@ -31,24 +33,25 @@
 
         <input type="checkbox" name="message" class="cserver_form">
         <label for="message">Message</label>
-        <button hx-post="/server_form" hx-swap="none" hx-include=".cserver_form">Create</button>
+        <button hx-post="/server_form" hx-swap="none" hx-include=".cserver_form ,#username">Create</button>
       </div>
     </div>
     <div id="jserver">
       <div id="jserver_name">Join Server</div>
       <div id="jserver_details">
         <input class="jserver_form" type="text" name="join_server_name" placeholder="Enter Server Name ">
-        <button hx-post="/server_form" hx-swap="none" hx-include=".jserver_form">Join</button>
+        <button hx-post="/server_form" hx-swap="none" hx-include=".jserver_form ,#username">Join</button>
 
       </div>
     </div>
   </div>
   <div id="content">
-    <h3> --- Few Games Here --- </h3>
+    <h3>&nbsp;--- Few Games Here --- </h3>
     <div id="game_list">
-      <ul hx-push-url="true">
-        <li hx-get="/uno" hx-target="#content">Uno</li>
-        <li hx-get="/poker" hx-target="#content">Poker</li>
+      <ul hx-push-url="true" >
+        <li hx-get="/uno" class="links" hx-target="#content">Uno</li>
+        <li hx-get="/unonm" class="links" hx-target="#content">Uno Nomercy</li>
+        <li hx-get="/poker" class="links" hx-target="#content">Poker</li>
       </ul>
     </div>
   </div>
@@ -66,6 +69,14 @@
       document.title = 'Playground';
     }
   });
+  
 </script>
-
+<script>
+  document.addEventListener('htmx:responseError', function(event) {
+    if (event.detail.xhr.status === 403) {
+      var response = JSON.parse(event.detail.xhr.responseText);
+      alert(response.detail);
+    }
+  });
+</script>
 </html>

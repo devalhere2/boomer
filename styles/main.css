@@ -4,24 +4,24 @@ body{
     box-sizing: border-box;
 }
 
-li:hover {
-    color: blue;
-    cursor: pointer;
+#username{
+    color: blueviolet;
+    height: 20px;
 }
-
-#login:hover {
+.links:hover{
     color: blue;
     cursor: pointer;
     text-decoration: underline;
 }
-
 
 #header {
     display: flex; 
     background-color: rgba(0, 225, 255, 0.119);
     padding-left: 10px;
     padding-right: 10px;
+    align-items: center;
 }
+
 
 #main{
     font-family: monospace;

@@ -29,7 +29,6 @@ body{
 
 #server{
     display: flex;   
-    flex-direction: column;
 }
 
 #cserver{

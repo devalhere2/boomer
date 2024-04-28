@@ -1,4 +1,5 @@
-from fastapi import APIRouter ,Request
+from fastapi import APIRouter ,Request ,HTTPException
+
 
 router = APIRouter()
 @router.post('/cserver_form')
@@ -13,8 +14,10 @@ async def read_root(request: Request):
     message_chat = 1 if 'message' in data_dict else 0
     
     if username and create_server_name and game:
+
         pass
     else:
+        raise HTTPException(status_code=403, detail="Add Username, Server Name and Game to create a server.")
         pass
     
 @router.post('/jserver_form')

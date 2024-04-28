@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="/static/htmx.js"></script>
+  <script src="components/basic.js" type="module"></script>
 
   <title>Playground</title>
   <link rel="stylesheet" href="styles/main.css">
@@ -15,38 +16,12 @@
   <header id="header">
     <h2 hx-push-url="true" style="flex:1; cursor: pointer" hx-get="/" hx-target="#main" >boomer.homes</h2>
     <input type="text" name="username" placeholder="Enter Username" id="username">
-    <!-- <h2 hx-get="/login" hx-target="#content" class="links" hx-push-url="true">Login</h2> -->
   </header> 
 
   <hr>
-  <div id="server">
-    <div id="cserver">
-      <div id="cserver_name">Create Server</div>
-      <div id="cserver_details">
-        <input class="cserver_form" name="create_server_name" placeholder="Enter Server Name ">
-        <select name="game" class="cserver_form">
-          <option value="" disabled selected>Select game</option>
-          <option value="uno">Uno</option>
-          <option value="unonm">Uno Nomercy</option>
-          <option value="poker">Poker</option>
-        </select>
-        <input type="checkbox" name="voicechat" class="cserver_form" >
-        <label for="voicechat">Voice Chat</label>
-
-        <input type="checkbox" name="message" class="cserver_form">
-        <label for="message">Message</label>
-        <button hx-post="/cserver_form" hx-swap="none" hx-include=".cserver_form ,#username">Create</button>
-      </div>
-    </div>
-    <div id="jserver">
-      <div id="jserver_name">Join Server</div>
-      <div id="jserver_details">
-        <input class="jserver_form" type="text" name="join_server_name" placeholder="Enter Server Name ">
-        <button hx-post="/jserver_form" hx-swap="none" hx-include=".jserver_form ,#username">Join</button>
-
-      </div>
-    </div>
-  </div>
+  <server-comp>
+  </server-comp>
+  
   <div id="content">
     <h3>&nbsp;--- Few Games Here --- </h3>
     <div id="game_list">
